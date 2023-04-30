@@ -1,5 +1,5 @@
 import { describe } from "node:test";
-import { LigthingXmlParseService } from "../../../domain/xmlreader";
+import { StrokeXmlParseService } from "../../../domain/StrokeXmlParseService";
 const {equal} = require("assert");
 
 
@@ -15,10 +15,9 @@ xsi:schemaLocation="http://service.nowcast.de/lightning/strokes http://schemas.n
 </strokes>`;
 
 describe('Xml Reading', function(){
-    var reader: LigthingXmlParseService = new LigthingXmlParseService()
+    var reader: StrokeXmlParseService = new StrokeXmlParseService()
 
-    console.log("------------------ 3 ")
-    let lastStroke: Date = new Date("2023-04-17T18:04:03.251+00:00")
+    let lastStroke: Date = new Date("2023-04-16T18:04:03.251+00:00")
     let buf: Buffer[] = [Buffer.from(xml, 'utf8')]
     describe('#parseXmml', function(){
         it('XML should return 3 elements', function() {

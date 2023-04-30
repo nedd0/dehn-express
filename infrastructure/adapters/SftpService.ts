@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 import { ISftpService } from "../../application/services/ISftpService";
 import SftpClient from "ssh2-sftp-client";
 import * as dotenv from "dotenv";
-import { buffer } from "node:stream/consumers";
+
 dotenv.config();
 
 @injectable()

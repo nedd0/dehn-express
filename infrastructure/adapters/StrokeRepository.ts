@@ -1,10 +1,11 @@
 import { injectable } from "inversify";
-import { Stroke } from "../../domain/stroke";
+import { Stroke } from "../../domain/Stroke";
 import { db } from "../config/mysql.config";
 import { OkPacket } from "mysql2";
+import { IStrokeRepository } from "../../application/services/IStrokeRepository";
 
 @injectable()
-export class StrokeRepository {
+export class StrokeRepository implements IStrokeRepository{
 
  create(stroke: Stroke, callback: Function)  {
     const queryString = "INSERT INTO strokes (timestamp, x, y, type, amplitude, height, location_error) values (?,?,?,?,?,?,?);";

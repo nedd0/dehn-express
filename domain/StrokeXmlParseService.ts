@@ -1,14 +1,14 @@
 
-import { Stroke } from "./stroke";
+import { Stroke } from "./Stroke";
 const xml2js = require('xml2js');
 const parser = new xml2js.Parser({ attrkey: "ATTR" });
 const fs = require('fs');
 
-export class LigthingXmlParseService {
+export class StrokeXmlParseService {
     /**
      * parseXml
      */
-    public parseXml(files:Buffer[], lastStroke:Date) {
+    public parseXml(files:Buffer[], lastStroke:Date) : Stroke[]{
        
        for (const file of files) {
   

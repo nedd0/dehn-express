@@ -1,14 +1,18 @@
 import { Producer, Kafka } from 'kafkajs';
-import { Stroke } from '../../domain/stroke';
+import { Stroke } from '../../domain/Stroke';
 import { injectable } from 'inversify';
+import * as dotenv from "dotenv";
+import { IKafkaStrokeProducer } from '../../application/services/IKafkaStrokeProducer';
+
+dotenv.config();
 
 @injectable()
-export class KafkaStrokeProducer {
+export class KafkaStrokeProducer implements IKafkaStrokeProducer{
   private producer: Producer;
 
   constructor() {
     const kafka = new Kafka({
-      brokers: ['localhost:9092'], // Replace with your Kafka broker URLs
+      brokers: [process.env.KAFKA_BROKER_HOS+process.env.KAFKA_BROKER_PORT], 
     });
 
     this.producer = kafka.producer();
@@ -18,7 +22,7 @@ export class KafkaStrokeProducer {
     await this.producer.connect();
     
     await this.producer.send({
-      topic: 'stroke-events', // Replace with your Kafka topic name
+      topic: process.env.KAFKA_STROKE_TOPIC, 
       messages: [
         { 
           key: stroke.timestamp, 

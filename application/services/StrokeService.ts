@@ -1,5 +1,5 @@
-import { Stroke } from "../../domain/stroke";
-import { LigthingXmlParseService } from "../../domain/xmlreader";  
+import { Stroke } from "../../domain/Stroke";
+import { StrokeXmlParseService } from "../../domain/StrokeXmlParseService";  
 import { IStrokeRepository } from "./IStrokeRepository";
 import { IKafkaStrokeProducer } from "./IKafkaStrokeProducer";
 import { ISftpService } from "./ISftpService";
@@ -29,7 +29,7 @@ export class StrokeService {
             let lastCallback = value[0].timestamp
 
             return this.sftpService.download(lastCallback, country).then( files => {
-                let strokes = new LigthingXmlParseService().parseXml(files, lastCallback)
+                let strokes = new StrokeXmlParseService().parseXml(files, lastCallback)
         
                 let newStrokes = []
 

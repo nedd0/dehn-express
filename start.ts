@@ -1,4 +1,4 @@
-import { StrokeService } from "./application/services/strokeService";
+import { StrokeService } from "./application/services/StrokeService";
 import { IStrokeRepository } from "./application/services/IStrokeRepository";
 import { ISftpService } from "./application/services/ISftpService";
 import { IKafkaStrokeProducer } from "./application/services/IKafkaStrokeProducer";
