@@ -1,3 +1,6 @@
+
+import {startPolling} from "./start"
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -7,6 +10,8 @@ var indexRouter = require('./interfaces/routes/index');
 var usersRouter = require('./interfaces/routes/users');
 
 var app = express();
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,3 +23,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;
+
+startPolling()
+
+

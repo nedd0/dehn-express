@@ -6,4 +6,5 @@ export interface Stroke {
     amplitude: string
     height: string
     locationError: string
+    country:string
   }

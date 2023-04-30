@@ -38,6 +38,7 @@ export class StrokeService {
                         this.strokeRepository.create(stroke, (err, id) => {
                             if(err) {return}
                         } )
+                        stroke.country=country
                         newStrokes.push(stroke)
                         this.kafkaProducer.produceStroke(stroke)
                     }
